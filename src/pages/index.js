@@ -2,7 +2,6 @@ import React from 'react';
 import HomeMain from '../components/Home/HomeMain';
 
 class Index extends React.Component {
-
     static getInitialProps({store}) {}
 
     constructor(props) {
