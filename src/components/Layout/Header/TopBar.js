@@ -7,14 +7,14 @@ const TopHeader = () => {
         <div className="header-top-area grey-bg d-none d-md-block">
             <div className="container">
                 <div className="row">
-                    <div className="col-xl-8 col-lg-8 col-md-6 d-flex align-items-center">
+                    {/* <div className="col-xl-8 col-lg-8 col-md-6 d-flex align-items-center">
                         <div className="header-info">
                             <span><i><FontAwesomeIcon prefix='far' icon={'map-marker-alt'} /></i> 15 Hamston Street, West</span>
                             <span className="header-ph"><i><FontAwesomeIcon prefix='far' icon={'phone'} /></i> 812 (345) 6789</span>
                             <span className="header-en"><i><FontAwesomeIcon prefix='far' icon={'envelope-open'} /></i> support@gmail.com</span>
                         </div>
-                    </div>
-                    <div className="col-xl-4 col-lg-4 col-md-6">
+                    </div> */}
+                    <div className="col-12">
                         <div className="header-right f-right ">
                             <div className="header-lang  pos-rel f-right">
                                 <div className="lang-icon"> 

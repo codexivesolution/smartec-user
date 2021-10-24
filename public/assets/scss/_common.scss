@@ -27,6 +27,8 @@
     font-style: normal;
 }
 
+
+
 @font-face {
     font-family: 'cerebri_sanssemibold';
     src: url('../fonts/cerebrisans-semibold-webfont.woff2') format('woff2'),
@@ -34,6 +36,13 @@
     font-weight: normal;
     font-style: normal;
 }
+
+@font-face {
+	font-family: Noto Sans CJK KR;
+    src: url('../fonts/NotoSansCJKkr-Regular.otf') format('opentype')
+}
+
+
 body {
 	font-family: $c_reg;
     font-style: normal;

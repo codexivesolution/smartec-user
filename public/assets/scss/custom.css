@@ -1,0 +1,77 @@
+.UserLoginBtn {
+    border: none !important;
+    background: transparent !important;
+    margin-top: 38px !important;
+    padding: 0 !important;
+    margin-left: 80.25px;
+    display: flex;
+    align-items: center;
+    font-weight: normal;
+    font-size: 16px;
+    color: #A09FA5;
+    font-family: Noto Sans CJK KR;
+
+}
+
+.UserLoginBtn img {
+    margin-right: 10.25px;
+}
+
+.FooterLink {
+    margin-left: 75.56px;
+}
+
+.FooterLink a {
+    margin-right: 24px;
+    font-weight: bold;
+    font-size: 16px;
+    color: #3D3C3E;
+    font-family: Noto Sans CJK KR;
+}
+
+.FooterInfo {
+    display: flex;
+    align-items: center;
+    height: 24px;
+    line-height: 24px;
+    margin-top: 8px;
+}
+
+.FooterInfo:first-child {
+    margin-top: 0 !important;
+}
+
+.FooterInfo p {
+    font-size: 16px;
+    font-weight: bold;
+    font-family: Noto Sans CJK KR;
+    color: #121212;
+    margin-right: 20px;
+    margin-bottom: 0;
+}
+
+.FooterInfo h5, .FooterInfo a {
+    font-weight: normal;
+    font-size: 16px;
+    color: #3D3C3E;
+    font-family: Noto Sans CJK KR;
+    margin-bottom: 0;
+}
+
+.footer-area {
+    padding-top: 69px;
+    padding-bottom: 124px;
+}
+
+.header-top-area{
+    height:60px;
+}
+
+.lang-icon{
+    display:flex !important;
+    align-items:center !important;
+}
+
+.main-menu-area{
+    height:100px !important;
+}
