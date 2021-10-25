@@ -1,3 +1,11 @@
+/* body{
+    user-select: none !important;
+} */
+
+h1, h2, h3, h4, h5, h6, p, label {
+    margin-bottom: 0;
+}
+
 .UserLoginBtn {
     border: none !important;
     background: transparent !important;
@@ -10,7 +18,6 @@
     font-size: 16px;
     color: #A09FA5;
     font-family: Noto Sans CJK KR;
-
 }
 
 .UserLoginBtn img {
@@ -63,15 +70,200 @@
     padding-bottom: 124px;
 }
 
-.header-top-area{
-    height:60px;
+.header-top-area {
+    height: 60px;
 }
 
-.lang-icon{
-    display:flex !important;
-    align-items:center !important;
+.lang-icon {
+    display: flex !important;
+    align-items: center !important;
 }
 
-.main-menu-area{
-    height:100px !important;
+.main-menu-area {
+    height: 100px !important;
+}
+
+.loginForm {
+    padding-top: 200px;
+    padding-bottom: 398px;
+    margin: 0 auto;
+    max-width: 560px;
+}
+
+.loginForm .formTitle h4 {
+    font-weight: bold;
+    font-size: 32px;
+    color: #0040A0;
+    margin-bottom: 0;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    height: 38px;
+    line-height: 38px;
+}
+
+.LoginFullForm {
+    padding-top: 80px;
+}
+
+.LoginFullForm label {
+    font-weight: normal;
+    font-size: 16px;
+    color: #121212;
+    font-family: 'Roboto', sans-serif;
+}
+
+.LoginFullForm .login-input {
+    width: 560px;
+    height: 64px;
+    border: 1px solid #A09FA5 !important;
+    border-radius: 4px;
+    padding: 22px 21px 23px 20px;
+    margin-top: 12px;
+    font-family: 'Roboto', sans-serif;
+    margin-bottom: 40px;
+    font-weight: normal;
+    font-size: 16px;
+    color: #121212;
+}
+
+.LoginFullForm .login-input::placeholder {
+    font-weight: normal;
+    font-size: 16px;
+    color: #A09FA5;
+    font-family: 'Roboto', sans-serif;
+}
+
+.checkboxContainer {
+    display: block;
+    position: relative;
+    padding-left: 32px;
+    /* margin-bottom: 12px; */
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.checkboxContainer input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #fff;
+    border: 1px solid #B3B2B7;
+    border-radius: 5px;
+}
+
+.checkboxContainer:hover input~.checkmark {
+    background-color: #fff;
+}
+
+.checkboxContainer input:checked~.checkmark {
+    background-color: #0040A0;
+    border: 1px solid #0040A0;
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.checkboxContainer input:checked~.checkmark:after {
+    display: block;
+}
+
+.checkboxContainer .checkmark:after {
+    left: 7px;
+    top: 3px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.checkboxContainer span {
+    font-weight: normal;
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+    color: #121212;
+}
+
+.LofinFooterBtn {
+    margin-left: auto;
+}
+
+.LofinFooterBtn button {
+    background: none !important;
+    border: none !important;
+    padding: 0 !important;
+    font-weight: normal;
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+    color: #0040A0;
+}
+
+.LofinFooterBtn button:first-child {
+    margin-right: 40px !important;
+}
+
+.footerBtnRow {
+    display: flex;
+    align-items: center;
+    height: 20px;
+    line-height: 20px;
+}
+
+.loginBtnRow {
+    margin-top: 60px;
+}
+
+.loginBtnRow .loginDisableBtn {
+    width: 100%;
+    height: 64px;
+    border: none !important;
+    background: #CFCFD2 !important;
+    border-radius: 4px !important;
+    font-weight: bold;
+    font-size: 20px;
+    color: #FFFFFF;
+    font-family: Noto Sans CJK KR;
+}
+
+.loginBtnRow .loginunableBtn {
+    width: 100%;
+    height: 64px;
+    border: none !important;
+    background: #0040A0 !important;
+    border-radius: 4px !important;
+    font-weight: bold;
+    font-size: 20px;
+    color: #FFFFFF;
+    font-family: Noto Sans CJK KR;
+}
+
+.showPasswordBtn{
+    background:none !important;
+    border:none !important;
+    
+}
+
+.showPasswordBtn img{
+    position: absolute;
+    top:32px;
+    right:25px;
 }
