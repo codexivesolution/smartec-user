@@ -1,11 +1,14 @@
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux';
 import STORAGEKEY from '../../config/APP/app.config';
 import { ApiPost } from '../../helper/API/ApiData';
 import AuthStorage from '../../helper/AuthStorage';
+import { changeLoginState } from '../../redux/actions/loginAction'
 
 const Login = () => {
-    const router = useRouter()
+    const router = useRouter();
+    const dispatch = useDispatch();
     const LoginformData = {
         email: "",
         password: ""
@@ -83,14 +86,12 @@ const Login = () => {
             setBtnSave(true);
             return;
         }
-
         ApiPost("user/auth/login", {
             email: loginform.email,
             password: loginform.password,
         })
             .then((res) => {
-                dispatch(changeLoginState(true))
-                debugger;
+                dispatch(changeLoginState(true));
                 if (saveEmail) {
                     AuthStorage.setStorageData(STORAGEKEY.email, loginform.email, true);
                 } else {
@@ -108,7 +109,6 @@ const Login = () => {
                     res.data,
                     false
                 );
-                debugger;
                 router.push("/home/homepage");
             })
             .catch((error) => {
