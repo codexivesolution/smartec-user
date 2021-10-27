@@ -11,14 +11,10 @@
     "save_email": "save e-mail",
     "sign_up": "sign up",
     "find_password": "find password",
-    "Placeholder": {
-      "email": "e-mail address",
-      "Password": "password"
-    },
-    "Errors": {
-      "this_is_required_information": "You have entered an invalid e-mail address.",
-      "incorrect_password": "incorrect password",
-      "invalidEmail": "Invalid Email"
-    }
+    "email_Placeholder": "e-mail address",
+    "Password_Placeholder": "password",
+    "this_is_required_information": "You have entered an invalid e-mail address.",
+    "incorrect_password": "incorrect password",
+    "invalidEmail": "Invalid Email"
   }
 }

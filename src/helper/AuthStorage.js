@@ -4,7 +4,7 @@ import STORAGEKEY from "../config/APP/app.config";
 class AuthStorage {
 
     static setStorageData(key, data, keepMeLoggedIn) {
-        console.log("keepMeLoggedIn",keepMeLoggedIn);
+        console.log("keepMeLoggedIn", keepMeLoggedIn);
         keepMeLoggedIn ? localStorage.setItem(key, data) : sessionStorage.setItem(key, data);
     }
 
@@ -46,9 +46,9 @@ class AuthStorage {
         sessionStorage.removeItem(key);
     }
 
-//     static getLang() {
-//         return localStorage.getItem(STORAGEKEY.lang) || getCookie('i18next') || "ko";
-//     }
+    static getLang() {
+        return localStorage.getItem(STORAGEKEY.lang) || getCookie('i18next') || "ko";
+    }
 }
 
 export default AuthStorage;

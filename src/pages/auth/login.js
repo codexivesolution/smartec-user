@@ -1,5 +1,7 @@
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react'
+import { GetServerSideProps } from 'next'
+import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
 import STORAGEKEY from '../../config/APP/app.config';
 import { ApiPost } from '../../helper/API/ApiData';
@@ -9,6 +11,7 @@ import { changeLoginState } from '../../redux/actions/loginAction'
 const Login = () => {
     const router = useRouter();
     const dispatch = useDispatch();
+    const { t } = useTranslation();
     const LoginformData = {
         email: "",
         password: ""
@@ -60,17 +63,17 @@ const Login = () => {
         const validEmail = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
         if (loginform.email && !validEmail.test(loginform.email)) {
-            login_Err.emailFormatErr = "잘못된 이메일."
+            login_Err.emailFormatErr = t("logIn.invalidEmail")
             flag = true
         }
 
         if (!loginform.email) {
-            login_Err.emailError = "필수 정보입니다.";
+            login_Err.emailError = t("logIn.this_is_required_information")
             flag = true
         }
 
         if (loginform.password === "") {
-            login_Err.passError = "비밀번호를 한번 더 확인해주세요.";
+            login_Err.passError = t("logIn.incorrect_password")
             flag = true
         }
 
@@ -114,11 +117,11 @@ const Login = () => {
             .catch((error) => {
                 if (error === "Wrong Email") {
                     setIncorrectPass("");
-                    setInvalidEmail("필수 정보입니다.");
+                    setInvalidEmail(t("logIn.this_is_required_information"));
                 }
                 if (error === "Wrong Password") {
                     setInvalidEmail("");
-                    setIncorrectPass("비밀번호를 한번 더 확인해주세요.");
+                    setIncorrectPass(t("logIn.incorrect_password"));
                 }
             });
     };
@@ -135,15 +138,15 @@ const Login = () => {
         <div>
             <div className="loginForm">
                 <div className="formTitle">
-                    <h4>로그인</h4>
+                    <h4>{t("logIn.log_In")}</h4>
                 </div>
                 <div className="LoginFullForm">
                     <div>
                         <div>
-                            <label>이메일</label>
+                            <label>{t("logIn.email")}</label>
                         </div>
                         <input
-                            placeholder="이메일 주소"
+                            placeholder={`${t("logIn.email_Placeholder")}`}
                             name="email"
                             value={loginform.email}
                             type="text"
@@ -171,11 +174,11 @@ const Login = () => {
                     </div>
                     <div >
                         <div>
-                            <label>비밀번호</label>
+                            <label>{t("logIn.password")}</label>
                         </div>
                         <div className="position-relative">
                             <input
-                                placeholder="비밀번호"
+                                placeholder={t("logIn.Password_Placeholder")}
                                 name="password"
                                 value={loginform.password}
                                 type={showPass ? 'text' : 'password'}
@@ -200,7 +203,7 @@ const Login = () => {
 
                     <div className="d-flex align-items-center footerBtnRow">
                         <div className="">
-                            <label className="checkboxContainer"><span>이메일 저장</span>
+                            <label className="checkboxContainer"><span>{t("logIn.save_email")}</span>
                                 <input
                                     type="checkbox"
                                     name="saveEmail"
@@ -212,13 +215,13 @@ const Login = () => {
                         </div>
 
                         <div className="LofinFooterBtn">
-                            <button>회원가입</button>
-                            <button>비밀번호 찾기</button>
+                            <button>{t("logIn.sign_up")}</button>
+                            <button>{t("logIn.find_password")}</button>
                         </div>
                     </div>
 
                     <div className="loginBtnRow">
-                        <button className={!isBtnSave ? "loginunableBtn" : "loginDisableBtn"} disabled={isBtnSave} onClick={Login}>로그인</button>
+                        <button className={!isBtnSave ? "loginunableBtn" : "loginDisableBtn"} disabled={isBtnSave} onClick={Login}>{t("logIn.log_In")}</button>
                         {/* <button className="loginDisableBtn">로그인</button>
                         <button className="loginunableBtn">로그인</button> */}
                     </div>
