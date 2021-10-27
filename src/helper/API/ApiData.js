@@ -1,4 +1,4 @@
-import {API} from '../../config/API/api.config';
+import { API } from '../../config/API/api.config';
 import AuthStorage from '../AuthStorage';
 export const BaseURL = API.endpoint + '/';
 // const axios = require('axios').default;
@@ -10,15 +10,18 @@ const defaultHeaders = {
     isJsonRequest: true
 };
 
-export const ApiGet = (type, header = defaultHeaders) => {
+export const ApiGet = (type) => {
+    const s = type.includes('?') ? '&' : '?';
     return new Promise((resolve, reject) => {
-        const s = type.includes('?') ? '&' : '?';
-        axios.get(BaseURL + type + `${s}lang=ko`, getHttpOptions(header))
+        axios.get(`${BaseURL}${type}${s}lang=${AuthStorage.getLang()}`, getHttpOptions())
             .then((responseJson) => {
                 resolve(responseJson.data);
-                // console.log(responseJson);
             })
             .catch((error) => {
+                if (error?.response?.status === 401) {
+                    AuthStorage.deauthenticateUser();
+                    window.location.href = "/"
+                }
                 if (error && error.hasOwnProperty('response') &&
                     error.response && error.response.hasOwnProperty('data') && error.response.data &&
                     error.response.data.hasOwnProperty('error') && error.response.data.error) {
@@ -30,76 +33,19 @@ export const ApiGet = (type, header = defaultHeaders) => {
     });
 }
 
-export const ApiDelete = (type, header = defaultHeaders) => {
-    return new Promise((resolve, reject) => {
-        const s = type.includes('?') ? '&' : '?';
-        axios.delete(BaseURL + type + `${s}lang=ko`, getHttpOptions(header))
-            .then((responseJson) => {
-                resolve(responseJson.data);
-                // console.log(responseJson);
-            })
-            .catch((error) => {
-                if (error && error.hasOwnProperty('response') &&
-                    error.response && error.response.hasOwnProperty('data') && error.response.data &&
-                    error.response.data.hasOwnProperty('error') && error.response.data.error) {
-                    reject(error.response.data.error);
-                } else {
-                    reject(error);
-                }
-            });
-    });
-}
-
-
-export const ApiPut = (type,data) => {
-    return new Promise((resolve, reject) => {
-        const s = type.includes('?') ? '&' : '?';
-        axios.put(BaseURL + type + `${s}lang=ko`,data,getHttpOptions())
-            .then((responseJson) => {
-                resolve(responseJson.data);
-                // console.log(responseJson);
-            })
-            .catch((error) => {
-                if (error && error.hasOwnProperty('response') &&
-                    error.response && error.response.hasOwnProperty('data') && error.response.data &&
-                    error.response.data.hasOwnProperty('error') && error.response.data.error) {
-                    reject(error.response.data.error);
-                } else {
-                    reject(error);
-                }
-            });
-    });
-}
-
-
-export const ApiPatch = (type,data) => {
-    return new Promise((resolve, reject) => {
-        const s = type.includes('?') ? '&' : '?';
-        axios.patch(BaseURL + type + `${s}lang=ko`,data,getHttpOptions())
-            .then((responseJson) => {
-                resolve(responseJson.data);
-                // console.log(responseJson);
-            })
-            .catch((error) => {
-                if (error && error.hasOwnProperty('response') &&
-                    error.response && error.response.hasOwnProperty('data') && error.response.data &&
-                    error.response.data.hasOwnProperty('error') && error.response.data.error) {
-                    reject(error.response.data.error);
-                } else {
-                    reject(error);
-                }
-            });
-    });
-}
 
 export const ApiGetNoAuth = (type) => {
+    const s = type.includes('?') ? '&' : '?';
     return new Promise((resolve, reject) => {
-        const s = type.includes('?') ? '&' : '?';
-        axios.get(BaseURL + type + `${s}lang=ko`, getHttpOptions({ ...defaultHeaders, isAuth: false }))
+        axios.get(`${BaseURL}${type}${s}lang=${AuthStorage.getLang()}`, getHttpOptions({ ...defaultHeaders, isAuth: false }))
             .then((responseJson) => {
                 resolve(responseJson.data);
             })
             .catch((error) => {
+                if (error?.response?.status === 401) {
+                    AuthStorage.deauthenticateUser();
+                    window.location.href = "/"
+                }
                 if (error && error.hasOwnProperty('response') &&
                     error.response && error.response.hasOwnProperty('data') && error.response.data &&
                     error.response.data.hasOwnProperty('error') && error.response.data.error) {
@@ -108,23 +54,123 @@ export const ApiGetNoAuth = (type) => {
                     reject(error);
                 }
             });
-    }) ;
+    });
 }
 
+
 export const ApiPost = (type, userData) => {
+    const s = type.includes('?') ? '&' : '?';
     return new Promise((resolve, reject) => {
-        const s = type.includes('?') ? '&' : '?';
-        axios.post(BaseURL + type + `${s}lang=ko`, userData, getHttpOptions())
+        axios.post(`${BaseURL}${type}${s}lang=${AuthStorage.getLang()}`, userData, getHttpOptions())
             .then((responseJson) => {
                 resolve(responseJson.data);
             })
             .catch((error) => {
+                if (error?.response?.status === 401) {
+                    AuthStorage.deauthenticateUser();
+                    window.location.href = "/"
+                }
+                if (error && error.hasOwnProperty('response') &&
+                    error.response && error.response.hasOwnProperty('data') && error.response.data &&
+                    error.response.data.hasOwnProperty('error') && error.response.data.error) {
+                    reject(error.response.data.error);
+                } else {
+                    reject(error);
+                }
+            });
+    });
+}
+
+
+export const ApiPostNoAuth = (type, userData) => {
+    const s = type.includes('?') ? '&' : '?';
+    return new Promise((resolve, reject) => {
+        axios.post(`${BaseURL}${type}${s}lang=${AuthStorage.getLang()}`, userData, getHttpOptions({ ...defaultHeaders, isAuth: false }))
+            .then((responseJson) => {
+                resolve(responseJson.data);
+            })
+            .catch((error) => {
+                if (error?.response?.status === 401) {
+                    AuthStorage.deauthenticateUser();
+                    window.location.href = "/"
+                }
                 if (error && error.hasOwnProperty('response') &&
                     error.response && error.response.hasOwnProperty('data') && error.response.data &&
                     error.response.data.hasOwnProperty('message') && error.response.data.message) {
                     reject(error.response.data.message);
                 } else {
-                    reject();
+                    reject(error);
+                }
+            });
+    });
+}
+
+
+export const ApiPatch = (type, userData) => {
+    const s = type.includes('?') ? '&' : '?';
+    return new Promise((resolve, reject) => {
+        axios.patch(`${BaseURL}${type}${s}lang=${AuthStorage.getLang()}`, userData, getHttpOptions())
+            .then((responseJson) => {
+                resolve(responseJson);
+            })
+            .catch((error) => {
+                if (error?.response?.status === 401) {
+                    AuthStorage.deauthenticateUser();
+                    window.location.href = "/"
+                }
+                if (error && error.hasOwnProperty('response') &&
+                    error.response && error.response.hasOwnProperty('data') && error.response.data &&
+                    error.response.data.hasOwnProperty('error') && error.response.data.error) {
+                    reject(error.response.data.error);
+                } else {
+                    reject(error);
+                }
+            });
+    });
+}
+
+
+export const ApiDelete = (type, userData) => {
+    const s = type.includes('?') ? '&' : '?';
+    return new Promise((resolve, reject) => {
+        axios.delete(`${BaseURL}${type}${s}lang=${AuthStorage.getLang()}`, getHttpOptions())
+            .then((responseJson) => {
+                resolve(responseJson);
+            })
+            .catch((error) => {
+                if (error?.response?.status === 401) {
+                    AuthStorage.deauthenticateUser();
+                    window.location.href = "/"
+                }
+                if (error && error.hasOwnProperty('response') &&
+                    error.response && error.response.hasOwnProperty('data') && error.response.data &&
+                    error.response.data.hasOwnProperty('error') && error.response.data.error) {
+                    reject(error.response.data.error);
+                } else {
+                    reject(error);
+                }
+            });
+    });
+}
+
+export const ApiPut = (type, userData) => {
+    const s = type.includes('?') ? '&' : '?';
+    return new Promise((resolve, reject) => {
+        axios.put(`${BaseURL}${type}${s}lang=${AuthStorage.getLang()}`, userData, getHttpOptions())
+            .then((responseJson) => {
+                resolve(responseJson);
+            })
+            .catch((error) => {
+                if (error?.response?.status === 401) {
+                    AuthStorage.deauthenticateUser();
+                    window.location.href = "/"
+                }
+                if (error && error.hasOwnProperty('response') &&
+                    error.response && error.response.hasOwnProperty('data') && error.response.data &&
+                    error.response.data.hasOwnProperty('error') && error.response.data.error) {
+                    reject(error.response.data.error);
+                } else {
+                    reject(error);
                 }
             });
     });
@@ -147,8 +193,8 @@ export const getHttpOptions = (options = defaultHeaders) => {
     }
 
     if (options.hasOwnProperty('AdditionalParams') && options.AdditionalParams) {
-        headers = {...headers, ...options.AdditionalParams};
+        headers = { ...headers, ...options.AdditionalParams };
     }
 
-    return {headers}
+    return { headers }
 }

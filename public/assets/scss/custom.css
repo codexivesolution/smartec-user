@@ -228,11 +228,11 @@ h1, h2, h3, h4, h5, h6, p, label {
     line-height: 20px;
 }
 
-.loginBtnRow {
+.loginBtnRow,.verifyBtnRow {
     margin-top: 60px;
 }
 
-.loginBtnRow .loginDisableBtn {
+.loginBtnRow .loginDisableBtn, .verifyBtnRow .verifyBtnDisableBtn{
     width: 100%;
     height: 64px;
     border: none !important;
@@ -244,7 +244,7 @@ h1, h2, h3, h4, h5, h6, p, label {
     font-family: Noto Sans CJK KR;
 }
 
-.loginBtnRow .loginunableBtn {
+.loginBtnRow .loginunableBtn, .verifyBtnRow .verifyBtnunableBtn {
     width: 100%;
     height: 64px;
     border: none !important;
@@ -267,3 +267,78 @@ h1, h2, h3, h4, h5, h6, p, label {
     top:32px;
     right:25px;
 }
+
+
+/* raviraj start */
+
+.FindPasswordFullForm {
+    padding-top: 80px;
+}
+
+.FindPasswordFullForm label {
+    font-weight: normal;
+    font-size: 16px;
+    color: #121212;
+    font-family: 'Roboto', sans-serif;
+}
+
+.FindPasswordFullForm .find-password-email-input {
+    width: 100%;
+    height: 64px;
+    border: 1px solid #A09FA5 !important;
+    border-radius: 4px;
+    padding: 22px 21px 23px 20px;
+    margin-top: 12px;
+    font-family: 'Roboto', sans-serif;
+    margin-bottom: 40px;
+    font-weight: normal;
+    font-size: 16px;
+    color: #121212;
+}
+
+.FindPasswordFullForm .find-password-email-input-width{
+    width: 360px !important;
+}
+
+
+.FindPasswordFullForm .find-password-email-input::placeholder {
+    font-weight: normal;
+    font-size: 16px;
+    color: #A09FA5;
+    font-family: 'Roboto', sans-serif;
+}
+
+.d-flex{
+    display:flex;
+}
+.verificationCodeBtnRow{
+    margin-top: 12px;
+    margin-bottom: 40px;
+    margin-left: 40px;
+}
+
+.verificationCodeBtnRow .verificationCodeDisableBtn {
+    width: 160px;
+    height: 64px;
+    border: none !important;
+    background: #CFCFD2 !important;
+    border-radius: 4px !important;
+    font-weight: bold;
+    font-size: 20px;
+    color: #FFFFFF;
+    font-family: Noto Sans CJK KR;
+}
+
+.verificationCodeBtnRow .verificationCodeunableBtn {
+    width: 160px;
+    height: 64px;
+    border: none !important;
+    background: #0040A0 !important;
+    border-radius: 4px !important;
+    font-weight: bold;
+    font-size: 20px;
+    color: #FFFFFF;
+    font-family: Noto Sans CJK KR;
+}
+
+/* raviraj end */
