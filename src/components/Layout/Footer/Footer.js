@@ -2,22 +2,30 @@ import React from 'react';
 import FooterBottom from './FooterBottom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Image from 'next/Image';
+import Link from 'next/link';
 
 const Footer = () => {
 
     return (
         <footer>
-            <div className="footer-area grey-bg pt-80 pb-30">
+            <div className="footer-area grey-bg">
                 <div className="container">
                     <div className="row">
-                        <div className="col-xl-3 col-lg-3 col-md-4">
-                            <div className="footer-wrapper mb-30">
+                        <div className="col-12">
+                            <div className="footer-wrapper mb-30 d-flex align-items-center">
                                 <div className="footer-logo">
                                     <a href="/">
-                                        <Image src={'/assets/img/logo/logo.png'} height="34" width="134" alt="flag" />
+                                        <Image src={'/assets/img/img/logo.svg'} height="46.04" width="185.44" alt="flag" />
                                     </a>
                                 </div>
-                                <div className="footer-text">
+                                <div className="FooterLink">
+                                    <Link  href="/" as="/">회사소개</Link>
+                                    <Link  href="/" as="/">연구개발</Link>
+                                    <Link  href="/" as="/">데이터사이언스</Link>
+                                    <Link  href="/" as="/">스마트지방간케어</Link>
+                                    <Link  href="/" as="/">투자정보</Link>
+                                </div>
+                                {/* <div className="footer-text">
                                     <p>At vero eoset accusamus et iusto odio dignissimos ducimus qui blpraesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi </p>
                                 </div>
                                 <div className="footer-icon">
@@ -25,10 +33,29 @@ const Footer = () => {
                                     <a href="#"><i><FontAwesomeIcon prefix='fab' icon={'twitter'} /></i></a>
                                     <a href="#"><i><FontAwesomeIcon prefix='fab' icon={'instagram'} /></i></a>
                                     <a href="#"><i><FontAwesomeIcon prefix='fab' icon={'youtube'} /></i></a>
-                                </div>
+                                </div> */}
                             </div>
                         </div>
-                        <div className="col-xl-2 col-lg-2 col-md-4">
+                        <div className="col-12">
+                                <div className="FooterInfo">
+                                        <p>대표명</p>
+                                        <h5>대표명</h5>
+                                </div>
+                                <div className="FooterInfo">
+                                        <p>사업자등록번호</p>
+                                        <a href="tel:115-88-02273">115-88-02273</a>
+                                </div>
+                                <div className="FooterInfo">
+                                        <p>회사주소</p>
+                                        <a href="">서울특별시 관악구 관악로 1 서울대학교 32-1동 2층</a>
+                                </div>
+                                <div className="FooterInfo">
+                                        <p>고객센터</p>
+                                        <a href="mailto:smatech2022@gmail.com">smatech2022@gmail.com</a>
+                                </div>
+
+                        </div>
+                        {/* <div className="col-xl-2 col-lg-2 col-md-4">
                             <div className="footer-wrapper mb-30">
                                 <h4 className="footer-title">Our Services</h4>
                                 <ul className="fotter-menu">
@@ -53,8 +80,8 @@ const Footer = () => {
                                     <li><a href="#">Contact Us</a></li>
                                 </ul>
                             </div>
-                        </div>
-                        <div className="col-xl-3 col-lg-3 col-md-6">
+                        </div> */}
+                        {/* <div className="col-xl-3 col-lg-3 col-md-6">
                             <div className="footer-wrapper mb-30">
                                 <h4 className="footer-title">Recent News</h4>
                                 <div className="footer-news">
@@ -78,8 +105,8 @@ const Footer = () => {
                                     </ul>
                                 </div>
                             </div>
-                        </div>
-                        <div className="col-xl-2 col-lg-2 col-md-6">
+                        </div> */}
+                        {/* <div className="col-xl-2 col-lg-2 col-md-6">
                             <div className="footer-wrapper mb-30">
                                 <h4 className="footer-title">Contact Us</h4>
                                 <div className="footer-info">
@@ -113,10 +140,10 @@ const Footer = () => {
                                     </li>
                                 </ul>
                             </div>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
-                <FooterBottom />
+                {/* <FooterBottom /> */}
             </div>
         </footer>
     );
