@@ -11,14 +11,10 @@
     "save_email": "이메일 저장",
     "sign_up": "회원가입",
     "find_password": "비밀번호 찾기",
-    "Placeholder": {
-      "email": "이메일 주소",
-      "Password": "비밀번호"
-    },
-    "Errors": {
-      "this_is_required_information": "존재하지 않는 이메일입니다.",
-      "incorrect_password": "비밀번호가 일치하지 않습니다.",
-      "invalidEmail": "잘못된 이메일 형식"
-    }
+    "email_Placeholder": "이메일 주소",
+    "Password_Placeholder": "비밀번호",
+    "this_is_required_information": "존재하지 않는 이메일입니다.",
+    "incorrect_password": "비밀번호가 일치하지 않습니다.",
+    "invalidEmail": "잘못된 이메일 형식"
   }
 }

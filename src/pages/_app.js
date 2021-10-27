@@ -1,6 +1,7 @@
 import './index.scss';
 import App from 'next/app';
-import {Provider} from 'react-redux';
+import { Provider } from 'react-redux';
+import '../helper/i18n/index'
 import React from 'react';
 import withRedux from "next-redux-wrapper";
 import store from '../redux/store';
@@ -12,21 +13,21 @@ loadIcons();
 
 class MyApp extends App {
 
-    static async getInitialProps({Component, ctx}) {
+    static async getInitialProps({ Component, ctx }) {
         const pageProps = Component.getInitialProps ? await Component.getInitialProps(ctx) : {};
 
         //Anything returned here can be accessed by the client
-        return {pageProps: pageProps};
+        return { pageProps: pageProps };
     }
 
     render() {
         //Page props that were returned  from 'getInitialProps' are stored in the props i.e. pageprops
-        const {Component, pageProps, store} = this.props;
+        const { Component, pageProps, store } = this.props;
 
         return (
             <Provider store={store}>
                 <Header />
-                <Component {...pageProps}/>
+                <Component {...pageProps} />
                 <Footer />
             </Provider>
         );

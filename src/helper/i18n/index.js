@@ -18,11 +18,11 @@ i18n
   .use(LanguageDetector)
   .init({
     resources,
-
     detection: {
       order: ['cookie', 'localStorage', 'htmlTag'],
       caches: ['cookie', 'localStorage']
     },
+    lng: "ko"
 
   });
 
