@@ -1,7 +1,5 @@
 import React, { Component, useEffect, useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Image from 'next/Image';
-import { useTranslation } from 'react-i18next';
 import { getCookie } from "../../../helper/util";
 import i18n from '../../../helper/i18n';
 const TopHeader = () => {
@@ -44,7 +42,7 @@ const TopHeader = () => {
                                         <Image src={'/assets/img/icon/Korea (Republic of).svg'} height="20" width="30" alt='flag' />
                                     }
 
-                                    {selectedLang}<i><FontAwesomeIcon prefix='fas' icon={'angle-down'} /></i>
+                                    {selectedLang}<i>angle-down</i>
                                 </div>
                                 <ul className="header-lang-list">
                                     <li><a onClick={() => {
