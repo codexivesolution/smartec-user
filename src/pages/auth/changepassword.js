@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { ApiPatchNoAuth } from '../../helper/API/ApiData';
 import ChnagePasswordSuccessfully from '../../modal/chnagePasswordSuccessfully';
 
-const ChnagePassword = () => {
+const ChangePassword = () => {
     const router = useRouter();
     const { t } = useTranslation();
     const email = router.query['email']?.toString();
@@ -223,4 +223,4 @@ const ChnagePassword = () => {
     )
 }
 
-export default ChnagePassword
+export default ChangePassword

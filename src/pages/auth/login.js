@@ -137,6 +137,10 @@ const Login = () => {
         router.push("/auth/findpassword");
     }
 
+    const signUp = () => {
+        router.push("/auth/signup");
+    }
+
     return (
         <div>
             <div className="loginForm">
@@ -218,8 +222,8 @@ const Login = () => {
                         </div>
 
                         <div className="LofinFooterBtn">
-                            <button onClick={findPassword}>{t("logIn.sign_up")}</button>
-                            <button>{t("logIn.find_password")}</button>
+                            <button onClick={signUp}>{t("logIn.sign_up")}</button>
+                            <button onClick={findPassword}>{t("logIn.find_password")}</button>
                         </div>
                     </div>
 
