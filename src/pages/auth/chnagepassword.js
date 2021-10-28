@@ -2,16 +2,13 @@ import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
-import STORAGEKEY from '../../config/APP/app.config';
-import { ApiPostNoAuth } from '../../helper/API/ApiData';
-import AuthStorage from '../../helper/AuthStorage';
+import { ApiPost } from '../../helper/API/ApiData';
 import { changeLoginState } from '../../redux/actions/loginAction'
 
-const Login = () => {
+const ChnagePassword = () => {
     const router = useRouter();
-    const dispatch = useDispatch();
     const { t } = useTranslation();
-    const LoginformData = {
+    const findPassword = {
         email: "",
         password: ""
     }
@@ -23,7 +20,7 @@ const Login = () => {
     };
 
     const [loginErrors, setLoginErrors] = useState(login_Err);
-    const [loginform, setloginform] = useState(LoginformData);
+    const [loginform, setloginform] = useState(findPassword);
     const [incorrectPass, setIncorrectPass] = useState("");
     const [invalidEmail, setInvalidEmail] = useState("");
     const [showPass, setShowPass] = useState(false);
@@ -88,7 +85,7 @@ const Login = () => {
             setBtnSave(true);
             return;
         }
-        ApiPostNoAuth("user/auth/login", {
+        ApiPost("user/auth/login", {
             email: loginform.email,
             password: loginform.password,
         })
@@ -133,32 +130,33 @@ const Login = () => {
         }
     }, [loginform])
 
-    const findPassword = () => {
-        router.push("/auth/findpassword");
-    }
-
     return (
         <div>
             <div className="loginForm">
                 <div className="formTitle">
-                    <h4>{t("logIn.log_In")}</h4>
+                    <h4>{t("logIn.find_password")}</h4>
                 </div>
-                <div className="LoginFullForm">
+                <div className="FindPasswordFullForm ">
                     <div>
                         <div>
                             <label>{t("logIn.email")}</label>
                         </div>
-                        <input
-                            placeholder={`${t("logIn.email_Placeholder")}`}
-                            name="email"
-                            value={loginform.email}
-                            type="text"
-                            className="login-input"
-                            onChange={(e) => {
-                                handleChange(e);
-                            }}
-                            autoComplete="off"
-                        />
+                        <div className='d-flex'>
+                            <input
+                                placeholder={`${t("logIn.email_Placeholder")}`}
+                                name="email"
+                                value={loginform.email}
+                                type="text"
+                                className="find-password-email-input find-password-email-input-width"
+                                onChange={(e) => {
+                                    handleChange(e);
+                                }}
+                                autoComplete="off"
+                            />
+                            <div className="verificationCodeBtnRow">
+                                <button className={!isBtnSave ? "verificationCodeunableBtn" : "verificationCodeDisableBtn"} disabled={isBtnSave} onClick={Login}>{t("logIn.log_In")}</button>
+                            </div>
+                        </div>
                         {loginErrors.emailError && (
                             <p className="form-error">
                                 {loginErrors.emailError}
@@ -179,13 +177,13 @@ const Login = () => {
                         <div>
                             <label>{t("logIn.password")}</label>
                         </div>
-                        <div className="position-relative">
+                        <div>
                             <input
                                 placeholder={t("logIn.Password_Placeholder")}
                                 name="password"
                                 value={loginform.password}
-                                type={showPass ? 'text' : 'password'}
-                                className="login-input"
+                                type='number'
+                                className="find-password-email-input mb-0"
                                 onChange={(e) => {
                                     handleChange(e);
                                 }}
@@ -200,26 +198,6 @@ const Login = () => {
                             {!loginErrors.passError && incorrectPass && (
                                 <p className="form-error">{incorrectPass}</p>
                             )}
-                            <button className="showPasswordBtn" onClick={showPasswordBtn}><img src={showPass ? "/assets/img/img/closeeye.svg" : "/assets/img/img/eyeBtn.svg"} /></button>
-                        </div>
-                    </div>
-
-                    <div className="d-flex align-items-center footerBtnRow">
-                        <div className="">
-                            <label className="checkboxContainer"><span>{t("logIn.save_email")}</span>
-                                <input
-                                    type="checkbox"
-                                    name="saveEmail"
-                                    value="0"
-                                    onChange={(e) => setSaveEmail(e.target.checked)}
-                                />
-                                <span className="checkmark"></span>
-                            </label>
-                        </div>
-
-                        <div className="LofinFooterBtn">
-                            <button onClick={findPassword}>{t("logIn.sign_up")}</button>
-                            <button>{t("logIn.find_password")}</button>
                         </div>
                     </div>
 
@@ -235,4 +213,4 @@ const Login = () => {
     )
 }
 
-export default Login
+export default ChnagePassword

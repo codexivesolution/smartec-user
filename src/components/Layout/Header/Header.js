@@ -16,11 +16,12 @@ const Header = () => {
 	const [menuOpen, setMenuOpen] = useState(false)
 	const dispatch = useDispatch();
 	const { userData } = useSelector((state) => state.userData);
+	const { is_loggedin } = useSelector((state) => state.login);
 	const [path, setPath] = useState("")
 
-	useEffect(() => {
-		dispatch(getUserData());
-	}, []);
+	// useEffect(() => {
+	// 	dispatch(getUserData());
+	// }, []);
 
 	useEffect(() => {
 		console.log("userData userData userData userData ", userData)
@@ -31,7 +32,9 @@ const Header = () => {
 	}
 
 	useEffect(() => {
-		dispatch(getUserData());
+		if (is_loggedin) {
+			dispatch(getUserData());
+		}
 		setPath(router.pathname)
 	}, [router])
 
@@ -54,10 +57,10 @@ const Header = () => {
 							</div>
 							<div id="right-header" className="col-xl-9 col-lg-9 col-md-6 col-4">
 								<div className="f-right d-none d-lg-block">
-									{userData &&
+									{is_loggedin && userData &&
 										<button className="UserLoginBtn"><img src="/assets/img/img/Union.svg" alt="user" />{userData?.first_name} {userData?.last_name}</button>
 									}
-									{!userData &&
+									{!is_loggedin &&
 										<button className="UserLoginBtn" onClick={goToLogin}><img src="/assets/img/img/Union.svg" alt="user" />{t("logIn.log_In")}</button>
 									}
 									{/* <a className="btn" href="#"><span className="btn-text">Consultancy <i><FontAwesomeIcon icon={['fas', 'long-arrow-alt-right']} /></i></span> </a> */}

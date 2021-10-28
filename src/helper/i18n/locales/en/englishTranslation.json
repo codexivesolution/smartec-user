@@ -4,6 +4,10 @@
   "data_science": "Data Science",
   "smart_fatty_liver_care": "Smart Fatty Liver Care",
   "investment_information": "Investment Information",
+  "CEO": "CEO",
+  "Business_registeration_number": "Business registeration number",
+  "Company_address": "Company address",
+  "Customer_service": "Customer service",
   "logIn": {
     "log_In": "Log in",
     "email": "e-mail",
@@ -14,7 +18,13 @@
     "email_Placeholder": "e-mail address",
     "Password_Placeholder": "password",
     "this_is_required_information": "You have entered an invalid e-mail address.",
+    "this_is_required": "This is required",
     "incorrect_password": "incorrect password",
-    "invalidEmail": "Invalid Email"
+    "invalidEmail": "Invalid Email",
+    "incorrect_verification_code": "Incorrect verification code",
+    "email_not_found": "Email not found.",
+    "send_verification_code": "Send Verification Code",
+    "enter_verification_code": "Enter Verification Code",
+    "verification_code": "Verification Code"
   }
 }

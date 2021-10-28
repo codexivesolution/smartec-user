@@ -4,6 +4,10 @@
   "data_science": "데이터사이언스",
   "smart_fatty_liver_care": "스마트지방간케어",
   "investment_information": "투자정보",
+  "CEO": "대표명",
+  "Business_registeration_number": "사업자등록번호",
+  "Company_address": "회사주소",
+  "Customer_service": "고객센터",
   "logIn": {
     "log_In": "로그인",
     "email": "이메일",
@@ -15,6 +19,12 @@
     "Password_Placeholder": "비밀번호",
     "this_is_required_information": "존재하지 않는 이메일입니다.",
     "incorrect_password": "비밀번호가 일치하지 않습니다.",
-    "invalidEmail": "잘못된 이메일 형식"
+    "invalidEmail": "잘못된 이메일 형식",
+    "incorrect_verification_code": "인증 코드가 일치하지 않습니다.",
+    "email_not_found": "해당 이메일로 등록된 계정이 없습니다.",
+    "this_is_required": "이것은 필수입니다",
+    "send_verification_code": "인증 코드 전송",
+    "enter_verification_code": "인증 코드 입력",
+    "verification_code": "인증 코드"
   }
 }
