@@ -51,5 +51,10 @@
     "agree_terms": "I have read and agreed to the terms and conditions of Smatec.",
     "This_is_required_information": "This is required information",
     "Password_error": "Password must be a combination of alphabets, numbers, special characters (8~16 characters)."
+  },
+  "DataScience": {
+    "Data_Science": "Data Science",
+    "Select_a_method_of_study": "Select a method of study.",
+    "Once_you_make_a_selection": "Once you make a selection, you’ll be directed to the corresponding page."
   }
 }

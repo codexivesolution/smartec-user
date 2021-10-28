@@ -15,15 +15,15 @@ function index() {
     return (
         <div className="bgImageDataScience">
             <div className="dataScienceMainTitle">
-                <h1>데이터 사이언스</h1>
+                <h1>{t("DataScience.Data_Science")}</h1>
                 {/* <img src="/assets/img/img/datascienceBg.jpg"/> */}
             </div>
             <div className="sectionSelectGroupMain">
                 <div className="sectionSelectGroup">
                     <div className="sectionSelectGroupContent">
                         <div className="sectionSelectTitle">
-                            <h4>연구 방식을 선택해주세요.</h4>
-                            <p>클릭 시 해당 연구 페이지로 이동합니다.</p>
+                            <h4>{t("DataScience.Select_a_method_of_study")}</h4>
+                            <p>{t("DataScience.Once_you_make_a_selection")}</p>
                         </div>
                         <div className="sectionSelectDiv">
                             <div className="GroupSection">
@@ -34,7 +34,7 @@ function index() {
                                 </div>
                             </div>
                             <div className="GroupSection">
-                                <div onClick={goDataassociation}className="sectionGroupClick">
+                                <div onClick={goDataassociation} className="sectionGroupClick">
                                     <img src="/assets/img/img/doublefile.svg" alt="" />
                                     <h1>종적연구</h1>
                                     <p>Association study</p>

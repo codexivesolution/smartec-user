@@ -59,7 +59,7 @@ const Header = () => {
 										<ul>
 											<li><Link href="/" as="/"><a>{t("about_us")}</a></Link></li>
 											<li><Link href="/" as="/"><a>{t("research_and_development")}</a></Link></li>
-											<li><Link href="/" as="/"><a>{t("data_science")}</a></Link></li>
+											<li><Link href="/datascience/index" as="/datascience/index"><a>{t("data_science")}</a></Link></li>
 											<li><Link href="/" as="/"><a>{t("smart_fatty_liver_care")}</a></Link></li>
 											<li><Link href="/" as="/"><a>{t("investment_information")}</a></Link></li>
 										</ul>

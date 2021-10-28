@@ -51,5 +51,10 @@
     "agree_terms": "Smatec의 이용 약관을 읽었으며, 내용에 동의합니다.",
     "This_is_required_information": "필수 정보입니다",
     "Password_error": "비밀번호는 8~16자의 영문, 숫자, 특수 문자를 포함해야 합니다."
+  },
+  "DataScience": {
+    "Data_Science": "데이터 사이언스",
+    "Select_a_method_of_study": "연구 방식을 선택해주세요.",
+    "Once_you_make_a_selection": "클릭 시 해당 연구 페이지로 이동합니다."
   }
 }
