@@ -25,6 +25,15 @@
     "this_is_required": "이것은 필수입니다",
     "send_verification_code": "인증 코드 전송",
     "enter_verification_code": "인증 코드 입력",
-    "verification_code": "인증 코드"
+    "verification_code": "인증 코드",
+    "Password_Does_not_match": "비밀번호가 일치하지 않습니다.",
+    "confirm_password": "새 비밀번호 확인",
+    "confirm_Password_Placeholder": "새 비밀번호를 한 번 더 입력하세요.",
+    "Confirm_Changes": "비밀번호 재설정하기"
+  },
+  "Modal": {
+    "password": "비밀번호가",
+    "has_been_changed": "변경되었습니다.",
+    "ok": "확인"
   }
 }
