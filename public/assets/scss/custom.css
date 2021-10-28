@@ -228,11 +228,11 @@ h1, h2, h3, h4, h5, h6, p, label {
     line-height: 20px;
 }
 
-.loginBtnRow,.verifyBtnRow {
+.loginBtnRow, .verifyBtnRow {
     margin-top: 60px;
 }
 
-.loginBtnRow .loginDisableBtn, .verifyBtnRow .verifyBtnDisableBtn{
+.loginBtnRow .loginDisableBtn, .verifyBtnRow .verifyBtnDisableBtn {
     width: 100%;
     height: 64px;
     border: none !important;
@@ -256,18 +256,16 @@ h1, h2, h3, h4, h5, h6, p, label {
     font-family: Noto Sans CJK KR;
 }
 
-.showPasswordBtn{
-    background:none !important;
-    border:none !important;
-    
+.showPasswordBtn {
+    background: none !important;
+    border: none !important;
 }
 
-.showPasswordBtn img{
+.showPasswordBtn img {
     position: absolute;
-    top:32px;
-    right:25px;
+    top: 32px;
+    right: 25px;
 }
-
 
 /* raviraj start */
 
@@ -296,10 +294,9 @@ h1, h2, h3, h4, h5, h6, p, label {
     color: #121212;
 }
 
-.FindPasswordFullForm .find-password-email-input-width{
+.FindPasswordFullForm .find-password-email-input-width {
     width: 360px !important;
 }
-
 
 .FindPasswordFullForm .find-password-email-input::placeholder {
     font-weight: normal;
@@ -308,10 +305,11 @@ h1, h2, h3, h4, h5, h6, p, label {
     font-family: 'Roboto', sans-serif;
 }
 
-.d-flex{
-    display:flex;
+.d-flex {
+    display: flex;
 }
-.verificationCodeBtnRow{
+
+.verificationCodeBtnRow {
     margin-top: 12px;
     margin-bottom: 40px;
     margin-left: 40px;
@@ -342,3 +340,25 @@ h1, h2, h3, h4, h5, h6, p, label {
 }
 
 /* raviraj end */
+
+.bgImageDataScience {
+    background-image: url(./../img/img/datascienceBg.svg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.dataScienceMainTitle{
+    padding-top:120px;
+    padding-bottom:130px;
+}
+
+.dataScienceMainTitle h1 {
+    font-weight: bold;
+    font-size: 48px;
+    color: #121212;
+    letter-spacing: 0.03em;
+    text-align: center;
+    font-family: Noto Sans CJK KR;
+
+}
