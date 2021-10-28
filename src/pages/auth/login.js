@@ -148,7 +148,7 @@ const Login = () => {
                     <h4>{t("logIn.log_In")}</h4>
                 </div>
                 <div className="LoginFullForm">
-                    <div>
+                    <div className="position-relative">
                         <div>
                             <label>{t("logIn.email")}</label>
                         </div>
@@ -157,7 +157,7 @@ const Login = () => {
                             name="email"
                             value={loginform.email}
                             type="text"
-                            className="login-input"
+                            className={loginform.email == "" ? 'login-input' : 'login-input-dark'}
                             onChange={(e) => {
                                 handleChange(e);
                             }}
@@ -189,7 +189,7 @@ const Login = () => {
                                 name="password"
                                 value={loginform.password}
                                 type={showPass ? 'text' : 'password'}
-                                className="login-input"
+                                className={loginform.password == "" ? 'login-input' : 'login-input-dark'}
                                 onChange={(e) => {
                                     handleChange(e);
                                 }}
