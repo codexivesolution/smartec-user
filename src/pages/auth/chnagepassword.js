@@ -1,215 +1,225 @@
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next';
-import { useDispatch } from 'react-redux';
-import { ApiPost } from '../../helper/API/ApiData';
-import { changeLoginState } from '../../redux/actions/loginAction'
+import { ApiPatchNoAuth } from '../../helper/API/ApiData';
+import ChnagePasswordSuccessfully from '../../modal/chnagePasswordSuccessfully';
 
 const ChnagePassword = () => {
     const router = useRouter();
     const { t } = useTranslation();
-    const findPassword = {
+    const email = router.query['email']?.toString();
+    const chnagePassword = {
         email: "",
-        password: ""
+        password: "",
+        confirmPassword: "",
     }
 
-    const login_Err = {
-        emailError: "",
-        emailFormatErr: "",
+    const change_password_error = {
         passError: "",
+        confirmPassError: "",
     };
 
-    const [loginErrors, setLoginErrors] = useState(login_Err);
-    const [loginform, setloginform] = useState(findPassword);
-    const [incorrectPass, setIncorrectPass] = useState("");
-    const [invalidEmail, setInvalidEmail] = useState("");
+    const [chnagePasswordForm, setChnagePassword] = useState(chnagePassword);
+    const [changePasswordError, setChangePasswordError] = useState(change_password_error);
+    const [isDisabled, setIsDisabled] = useState(true);
     const [showPass, setShowPass] = useState(false);
-    const [saveEmail, setSaveEmail] = useState(false);
-    const [isBtnSave, setBtnSave] = useState(false);
+    const [showConfirmPass, setConfirmShowPass] = useState(false);
+    const [showModal, setShowModal] = useState(false);
 
-
-    const handleChange = (e) => {
-        if (e.target.name === "acceptTerm") {
-            setloginform({
-                ...loginform,
-                [e.target.name]: e.target.checked,
-            });
-        } else {
-
-            setloginform({
-                ...loginform,
-                [e.target.name]: e.target.value,
+    useEffect(() => {
+        if (email) {
+            setChnagePassword({
+                ...chnagePasswordForm,
+                email: email,
             });
         }
-    };
+    }, [])
+
+    useEffect(() => {
+        if (chnagePasswordForm.password === "" || chnagePasswordForm.confirmPassword === "") {
+            setIsDisabled(true)
+        } else {
+            if (changePasswordError.passError != "" || changePasswordError.confirmPassError != "") {
+                setIsDisabled(true)
+            } else {
+                setIsDisabled(false)
+            }
+        }
+
+    }, [chnagePasswordForm, changePasswordError])
+
+    const validateEmapty = () => {
+        let flag = true
+
+        if (chnagePasswordForm.password !== chnagePasswordForm.confirmPassword) {
+            setChangePasswordError({
+                ...changePasswordError,
+                confirmPassError: `${t("logIn.Password_Does_not_match")}`
+            })
+            flag = false
+        }
+
+        return flag
+    }
+
 
     const showPasswordBtn = () => {
         setShowPass(!showPass)
     }
 
-    const validateForm = () => {
+    const showConfirmPasswordBtn = () => {
+        setConfirmShowPass(!showConfirmPass)
+    }
 
-        let flag = false
-        let login_Err = {
-            emailError: "",
-            emailFormatErr: "",
-            passError: "",
-        };
+    const handleChange = (e) => {
+        if (e.target.name === "verification_code") {
 
-        const validEmail = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            const re = /^[0-9\b]+$/;
 
-        if (loginform.email && !validEmail.test(loginform.email)) {
-            login_Err.emailFormatErr = t("logIn.invalidEmail")
-            flag = true
+            if (!e.target.value || e.target.value === "" || re.test(e.target.value)) {
+                setChnagePassword({
+                    ...chnagePasswordForm,
+                    [e.target.name]: e.target.value,
+                });
+            }
+
+        } else {
+
+            setChnagePassword({
+                ...chnagePasswordForm,
+                [e.target.name]: e.target.value,
+            });
+        }
+    };
+
+    const fnChnagePassword = async () => {
+
+        if (!validateEmapty()) {
+            return
         }
 
-        if (!loginform.email) {
-            login_Err.emailError = t("logIn.this_is_required_information")
-            flag = true
+        try {
+
+            ApiPatchNoAuth("user/auth/chnage-password", {
+                email: chnagePasswordForm.email,
+                password: chnagePasswordForm.password,
+            })
+                .then((res) => {
+
+                    setShowModal(true)
+
+                })
+                .catch((error) => {
+
+                });
+
+        } catch (error) {
         }
-
-        if (loginform.password === "") {
-            login_Err.passError = t("logIn.incorrect_password")
-            flag = true
-        }
-
-        setLoginErrors(login_Err);
-        setIncorrectPass("");
-
-        return flag;
 
     }
 
-    const Login = () => {
-        if (validateForm()) {
-            setBtnSave(true);
-            return;
-        }
-        ApiPost("user/auth/login", {
-            email: loginform.email,
-            password: loginform.password,
-        })
-            .then((res) => {
-                dispatch(changeLoginState(true));
-                if (saveEmail) {
-                    AuthStorage.setStorageData(STORAGEKEY.email, loginform.email, true);
-                } else {
-                    AuthStorage.deleteKey(STORAGEKEY.email)
-                }
+    const onHide = () => {
+        setShowModal(false)
+    }
 
-                AuthStorage.setStorageData(
-                    STORAGEKEY.token,
-                    res.data.token,
-                    false
-                );
-                delete res.data.token;
-                AuthStorage.setStorageJsonData(
-                    STORAGEKEY.userData,
-                    res.data,
-                    false
-                );
-                router.push("/home/homepage");
-            })
-            .catch((error) => {
-                if (error === "Wrong Email") {
-                    setIncorrectPass("");
-                    setInvalidEmail(t("logIn.this_is_required_information"));
-                }
-                if (error === "Wrong Password") {
-                    setInvalidEmail("");
-                    setIncorrectPass(t("logIn.incorrect_password"));
-                }
-            });
-    };
-
-    useEffect(() => {
-        if (loginform.email == "" || loginform.password == "") {
-            setBtnSave(true)
-        } else {
-            setBtnSave(false)
-        }
-    }, [loginform])
+    const goToLogin = () => {
+        router.push("/auth/login");
+    }
 
     return (
-        <div>
-            <div className="loginForm">
-                <div className="formTitle">
-                    <h4>{t("logIn.find_password")}</h4>
-                </div>
-                <div className="FindPasswordFullForm ">
-                    <div>
-                        <div>
-                            <label>{t("logIn.email")}</label>
-                        </div>
-                        <div className='d-flex'>
-                            <input
-                                placeholder={`${t("logIn.email_Placeholder")}`}
-                                name="email"
-                                value={loginform.email}
-                                type="text"
-                                className="find-password-email-input find-password-email-input-width"
-                                onChange={(e) => {
-                                    handleChange(e);
-                                }}
-                                autoComplete="off"
-                            />
-                            <div className="verificationCodeBtnRow">
-                                <button className={!isBtnSave ? "verificationCodeunableBtn" : "verificationCodeDisableBtn"} disabled={isBtnSave} onClick={Login}>{t("logIn.log_In")}</button>
-                            </div>
-                        </div>
-                        {loginErrors.emailError && (
-                            <p className="form-error">
-                                {loginErrors.emailError}
-                            </p>
-                        )}
-                        {loginErrors.emailFormatErr && (
-                            <p className="form-error">
-                                {loginErrors.emailFormatErr}
-                            </p>
-                        )}
-                        {!loginErrors.emailError &&
-                            !loginErrors.emailFormatErr &&
-                            invalidEmail && (
-                                <p className="form-error">{invalidEmail}</p>
-                            )}
+        <>
+            <div>
+                <div className="loginForm">
+                    <div className="formTitle">
+                        <h4>{t("logIn.find_password")}</h4>
                     </div>
-                    <div >
-                        <div>
-                            <label>{t("logIn.password")}</label>
-                        </div>
-                        <div>
-                            <input
-                                placeholder={t("logIn.Password_Placeholder")}
-                                name="password"
-                                value={loginform.password}
-                                type='number'
-                                className="find-password-email-input mb-0"
-                                onChange={(e) => {
-                                    handleChange(e);
-                                }}
-                                autoComplete="off"
-
-                            />
-                            {loginErrors.passError && (
+                    <div className="FindPasswordFullForm ">
+                        {/* <div >
+                            <div>
+                                <label>{t("logIn.password")}</label>
+                            </div>
+                            <div className="position-relative">
+                                <input
+                                    placeholder={`${t("logIn.Password_Placeholder")}`}
+                                    name="password"
+                                    value={chnagePasswordForm.password}
+                                    type={showPass ? 'text' : 'password'}
+                                    className="find-password-email-input"
+                                    onChange={(e) => {
+                                        handleChange(e);
+                                    }}
+                                    autoComplete="off"
+                                />
+                            </div>
+                            {changePasswordError.passError && (
                                 <p className="form-error">
-                                    {loginErrors.passError}
+                                    {changePasswordError.passError}
                                 </p>
                             )}
-                            {!loginErrors.passError && incorrectPass && (
-                                <p className="form-error">{incorrectPass}</p>
-                            )}
+                            <button className="showPasswordBtn" onClick={showPasswordBtn}><img src={showPass ? "/assets/img/img/closeeye.svg" : "/assets/img/img/eyeBtn.svg"} /></button>
+                        </div> */}
+
+                        <div >
+                            <div>
+                                <label>{t("logIn.password")}</label>
+                            </div>
+                            <div className="position-relative">
+                                <input
+                                    placeholder={t("logIn.Password_Placeholder")}
+                                    name="password"
+                                    value={chnagePasswordForm.password}
+                                    type={showConfirmPass ? 'text' : 'password'}
+                                    className="find-password-email-input"
+                                    onChange={(e) => {
+                                        handleChange(e);
+                                    }}
+                                    autoComplete="off"
+
+                                />
+                                {changePasswordError.passError && (
+                                    <p className="form-error">
+                                        {changePasswordError.passError}
+                                    </p>
+                                )}
+                                <button className="showPasswordBtn" onClick={showPasswordBtn}><img src={showPass ? "/assets/img/img/closeeye.svg" : "/assets/img/img/eyeBtn.svg"} /></button>
+                            </div>
                         </div>
-                    </div>
+                        <div >
+                            <div>
+                                <label>{t("logIn.confirm_password")}</label>
+                            </div>
+                            <div className="position-relative">
+                                <input
+                                    placeholder={t("logIn.confirm_Password_Placeholder")}
+                                    name="confirmPassword"
+                                    value={chnagePasswordForm.confirmPassword}
+                                    type={showConfirmPass ? 'text' : 'password'}
+                                    className="find-password-email-input mb-0"
+                                    onChange={(e) => {
+                                        handleChange(e);
+                                    }}
+                                    autoComplete="off"
 
-                    <div className="loginBtnRow">
-                        <button className={!isBtnSave ? "loginunableBtn" : "loginDisableBtn"} disabled={isBtnSave} onClick={Login}>{t("logIn.log_In")}</button>
-                        {/* <button className="loginDisableBtn">로그인</button>
-                        <button className="loginunableBtn">로그인</button> */}
-                    </div>
+                                />
+                                {changePasswordError.confirmPassError && (
+                                    <p className="form-error">
+                                        {changePasswordError.confirmPassError}
+                                    </p>
+                                )}
+                                <button className="showPasswordBtn" onClick={showConfirmPasswordBtn}><img src={showConfirmPass ? "/assets/img/img/closeeye.svg" : "/assets/img/img/eyeBtn.svg"} /></button>
+                            </div>
+                        </div>
 
+                        <div className="loginBtnRow">
+                            <button className={!isDisabled ? "loginunableBtn" : "loginDisableBtn"} disabled={isDisabled} onClick={fnChnagePassword}>{t("logIn.Confirm_Changes")}</button>
+                        </div>
+
+                    </div>
                 </div>
             </div>
-        </div>
+
+            {showModal && <ChnagePasswordSuccessfully onHide={onHide} show={showModal} goToLogin={goToLogin} />}
+        </>
     )
 }
 

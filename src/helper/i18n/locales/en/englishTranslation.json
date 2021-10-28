@@ -25,6 +25,15 @@
     "email_not_found": "Email not found.",
     "send_verification_code": "Send Verification Code",
     "enter_verification_code": "Enter Verification Code",
-    "verification_code": "Verification Code"
+    "verification_code": "Verification Code",
+    "Password_Does_not_match": "Password Does not match",
+    "confirm_password": "Confirm Password",
+    "confirm_Password_Placeholder": "Enter New Password again",
+    "Confirm_Changes": "Confirm Changes"
+  },
+  "Modal": {
+    "password": "password",
+    "has_been_changed": "has been changed.",
+    "ok": "Ok"
   }
 }
