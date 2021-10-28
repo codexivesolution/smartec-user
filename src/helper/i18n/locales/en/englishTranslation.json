@@ -35,5 +35,21 @@
     "password": "password",
     "has_been_changed": "has been changed.",
     "ok": "Ok"
+  },
+  "SignUp": {
+    "Sign_up": "Sign-up",
+    "All_fields_are_required": "All fields are required.",
+    "last_name": "Last Name",
+    "last_name_placeholder": "Enter Last Name",
+    "First_Name": "First Name",
+    "Enter_First_Name": "Enter First Name",
+    "Organization": "Organization",
+    "Enter_the_name_of_organization": "Enter the name of organization",
+    "Country": "Country",
+    "Select_your_country_of_origin": "Select your country of origin",
+    "Email_Address": "E-mail Address",
+    "agree_terms": "I have read and agreed to the terms and conditions of Smatec.",
+    "This_is_required_information": "This is required information",
+    "Password_error": "Password must be a combination of alphabets, numbers, special characters (8~16 characters)."
   }
 }

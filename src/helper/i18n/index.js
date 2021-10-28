@@ -3,7 +3,6 @@ import EnglishTranslation from "./locales/en/englishTranslation.json"
 import KoreanTranslation from "./locales/ko/koreanTranslation.json"
 import LanguageDetector from 'i18next-browser-languagedetector';
 import { initReactI18next } from 'react-i18next';
-
 const resources = {
   en: {
     translation: EnglishTranslation
@@ -21,8 +20,7 @@ i18n
     detection: {
       order: ['cookie', 'localStorage', 'htmlTag'],
       caches: ['cookie', 'localStorage']
-    },
-    lng: "ko"
+    }
 
   });
 

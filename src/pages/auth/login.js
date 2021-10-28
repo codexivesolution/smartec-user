@@ -6,8 +6,8 @@ import STORAGEKEY from '../../config/APP/app.config';
 import { ApiPostNoAuth } from '../../helper/API/ApiData';
 import AuthStorage from '../../helper/AuthStorage';
 import { changeLoginState } from '../../redux/actions/loginAction'
-
 const Login = () => {
+
     const router = useRouter();
     const dispatch = useDispatch();
     const { t } = useTranslation();
@@ -138,7 +138,7 @@ const Login = () => {
     }
 
     const signUp = () => {
-        router.push("/auth/signup");
+        router.push("/auth/verifyemail");
     }
 
     return (
@@ -153,7 +153,7 @@ const Login = () => {
                             <label>{t("logIn.email")}</label>
                         </div>
                         <input
-                            placeholder={`${t("logIn.email_Placeholder")}`}
+                            placeholder={t('logIn.email_Placeholder')}
                             name="email"
                             value={loginform.email}
                             type="text"

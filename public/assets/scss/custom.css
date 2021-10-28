@@ -253,7 +253,7 @@ h1, h2, h3, h4, h5, h6, p, label {
     margin-top: 60px;
 }
 
-.loginBtnRow .loginDisableBtn, .verifyBtnRow .verifyBtnDisableBtn {
+.loginBtnRow .loginDisableBtn, .verifyBtnRow .verifyBtnDisableBtn, .signUpForm .signup-Disable-btn {
     width: 100%;
     height: 64px;
     border: none !important;
@@ -265,7 +265,7 @@ h1, h2, h3, h4, h5, h6, p, label {
     font-family: Noto Sans CJK KR;
 }
 
-.loginBtnRow .loginunableBtn, .verifyBtnRow .verifyBtnunableBtn, .signUpForm .signup-btn {
+.loginBtnRow .loginunableBtn, .verifyBtnRow .verifyBtnunableBtn, .signUpForm .signup-unable-btn {
     width: 100%;
     height: 64px;
     border: none !important;
@@ -281,7 +281,7 @@ h1, h2, h3, h4, h5, h6, p, label {
     background: none !important;
     border: none !important;
 }
-.signUpForm .signup-btn {
+.signUpForm .signup-unable-btn, .signUpForm .signup-Disable-btn {
     margin-top: 12px;
 }
 

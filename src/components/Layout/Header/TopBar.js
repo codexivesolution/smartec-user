@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Image from 'next/Image';
 import { useTranslation } from 'react-i18next';
 import { getCookie } from "../../../helper/util";
-import i18next from 'i18next';
+import i18n from '../../../helper/i18n';
 const TopHeader = () => {
 
     const [selectedLang, setSelectedLang] = useState("한국어(KR)");
@@ -27,7 +27,7 @@ const TopHeader = () => {
 
     const changeLanguage = (lang, name) => {
         setSelectedLang(name);
-        i18next.changeLanguage(lang);
+        i18n.changeLanguage(lang);
     };
     return (
         <div className="header-top-area grey-bg d-none d-md-block">

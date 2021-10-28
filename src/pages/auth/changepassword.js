@@ -51,6 +51,11 @@ const ChangePassword = () => {
     const validateEmapty = () => {
         let flag = true
 
+        if (!validPassword.test(chnagePasswordForm.password)) {
+            SignupError.passError = `${t("SignUp.Password_error")}`;
+            flag = false
+        }
+
         if (chnagePasswordForm.password !== chnagePasswordForm.confirmPassword) {
             setChangePasswordError({
                 ...changePasswordError,
@@ -58,6 +63,12 @@ const ChangePassword = () => {
             })
             flag = false
         }
+
+        const validPassword = new RegExp(
+            "^(?=.*[a-z])(?=.*[0-9])(?=.{8,16})"
+        );
+
+
 
         return flag
     }
