@@ -342,15 +342,15 @@ h1, h2, h3, h4, h5, h6, p, label {
 /* raviraj end */
 
 .bgImageDataScience {
-    background-image: url(./../img/img/datascienceBg.svg);
+    background-image: url(./../img/img/datascienceBg.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
 }
 
-.dataScienceMainTitle{
-    padding-top:120px;
-    padding-bottom:130px;
+.dataScienceMainTitle {
+    padding-top: 120px;
+    padding-bottom: 130px;
 }
 
 .dataScienceMainTitle h1 {
@@ -360,5 +360,346 @@ h1, h2, h3, h4, h5, h6, p, label {
     letter-spacing: 0.03em;
     text-align: center;
     font-family: Noto Sans CJK KR;
+}
 
+body {
+    overflow-x: hidden;
+}
+
+#__next {
+    width: 1920px;
+    margin: 0 auto;
+}
+
+.sectionSelectGroupMain {
+    padding-bottom: 717px;
+}
+
+.sectionSelectGroup {
+    background-color: #fff;
+    height: 640px;
+    box-shadow: 0px 0px 20px rgba(160, 159, 165, 0.7);
+    border-radius: 4px;
+    padding-top: 110px;
+}
+
+.sectionSelectTitle {
+    text-align: center;
+}
+
+.sectionSelectTitle h4 {
+    font-weight: bold;
+    font-size: 30px;
+    font-family: Noto Sans CJK KR;
+    color: #3D3C3E;
+    line-height: 44px
+}
+
+.sectionSelectTitle p {
+    font-weight: normal;
+    font-size: 25px;
+    font-family: Noto Sans CJK KR;
+    color: #A09FA5;
+    line-height: 37px;
+}
+
+.sectionSelectDiv {
+    display: flex;
+    justify-content: center;
+}
+
+.GroupSection {
+    /* padding: 86px 140px 120px 140px; */
+    text-align: center;
+    position: relative;
+}
+
+.GroupSection h1 {
+    font-weight: bold;
+    font-size: 30px;
+    font-family: Noto Sans CJK KR;
+    color: #0040A0;
+    line-height: 44px;
+    margin-top: 12px;
+}
+
+.GroupSection p {
+    font-weight: bold;
+    font-size: 20px;
+    font-family: Noto Sans CJK KR;
+    color: #A09FA5;
+    line-height: 30px;
+    margin-top: 6px;
+}
+
+.GroupSection:first-child {
+    padding: 86px 77px 120px 0px;
+}
+
+.GroupSection:last-child {
+    padding: 86px 0px 120px 136px;
+}
+
+.GroupSection:first-child :after {
+    width: 2px;
+    height: 305px;
+    background: #E3E2E4;
+    position: absolute;
+    top: 43px;
+    right: 0;
+    content: '';
+    display: block;
+}
+
+.sectionGroupClick {
+    cursor: pointer;
+}
+
+.dataGroupPageTitle {
+    text-align: center;
+    padding-top: 120px;
+    padding-bottom: 120px;
+}
+
+.dataGroupPageTitle h1 {
+    font-weight: bold;
+    font-size: 48px;
+    color: #121212;
+    letter-spacing: 0.03em;
+    font-family: Noto Sans CJK KR;
+    line-height: 60px;
+}
+
+.dataGroupPageTitle p {
+    font-weight: bold;
+    font-size: 32px;
+    color: #A09FA5;
+    font-family: Noto Sans CJK KR;
+    line-height: 60px;
+}
+
+.dataGroupRow {
+    width: 100%;
+    border-bottom: 1px solid #A09FA5;
+    padding-bottom: 40px;
+    margin-bottom: 60px;
+}
+
+.dataGroupRow h1 {
+    font-weight: bold;
+    font-size: 24px;
+    color: #3D3C3E;
+    line-height: 40px;
+    font-family: Noto Sans CJK KR;
+}
+
+.dataGroupRow p {
+    font-weight: normal;
+    font-size: 18px;
+    color: #A09FA5;
+    line-height: 28px;
+    margin-top: 4px;
+    font-family: Noto Sans CJK KR;
+}
+
+.dataGroupPageContent {
+    width: 1160px;
+    margin: 0 auto;
+}
+
+.dataGroupTitleArrow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.dataGroupInputRowMain {
+    padding-top: 10px;
+}
+
+.dataGroupRow .dataGroupInputRow {
+    padding-top: 30px;
+}
+
+.dataGroupInputRow .dataGroupInputFirst {
+    width: 360px;
+    height: 52px;
+    padding: 14px 20px;
+    border: 1px solid #CFCFD2;
+    border-radius: 4px;
+    margin-right: 40px;
+}
+
+.dataGroupInputRow .dataGroupInputSecond {
+    width: 560px;
+    height: 52px;
+    padding: 14px 20px;
+    border: 1px solid #CFCFD2;
+    border-radius: 4px;
+    margin-right: 40px;
+}
+
+.dataGroupInputRow input:focus {
+    border: 1px solid #0040A0;
+}
+
+.dataGroupInputRow input::placeholder {
+    font-weight: normal;
+    font-size: 16px;
+    color: #A09FA5;
+    line-height: 24px;
+    font-family: Noto Sans CJK KR;
+}
+
+.dataGroupInputRow .addBtn {
+    width: 160px;
+    height: 52px;
+    border-radius: 4px;
+    background: #CFCFD2;
+    font-weight: bold;
+    font-size: 16px;
+    color: #FFFFFF;
+    font-family: Noto Sans CJK KR;
+    border: none !important;
+}
+
+.dataGroupInputRow .delBtn {
+    width: 160px;
+    height: 52px;
+    border-radius: 4px;
+    background: #0040A0;
+    font-weight: bold;
+    font-size: 16px;
+    color: #FFFFFF;
+    font-family: Noto Sans CJK KR;
+    border: none !important;
+}
+
+.cursor-pointor {
+    cursor: pointer;
+}
+
+.SelectFileSection {
+    background: #FAFAFA !important;
+    padding-top: 60px;
+    padding-bottom: 60px;
+    margin-top: 100px;
+}
+
+.SelectFileContainer {
+    width: 1160px;
+    margin: 0 auto;
+}
+
+.SelectFileRow {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.SelectFileRow h1 {
+    font-weight: bold;
+    font-size: 20px;
+    color: #0040A0;
+    line-height: 30px;
+    font-family: Noto Sans CJK KR;
+    width: 19px;
+    margin-right: 10px;
+}
+
+.SelectFileTerms {
+    width: 960px;
+}
+
+.SelectFileTerms p {
+    font-family: Noto Sans CJK KR;
+    color: #3D3C3E;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 36px;
+    padding-right: 90px;
+}
+
+.selectFileInputRow {
+    position: relative;
+    padding-top: 20px;
+}
+
+.selectFileInputRow .selectFileInput {
+    width: 960px;
+    height: 52px;
+    border-radius: 4px;
+    border: 1px solid #CFCFD2;
+    background: #FFFFFF;
+    padding: 14px 20px;
+    font-weight: normal;
+    font-size: 16px;
+    font-family: Noto Sans CJK KR;
+    color: #3D3C3E;
+}
+
+.selectFileInputRow .selectFileInput::placeholder {
+    font-weight: normal;
+    font-size: 16px;
+    font-family: Noto Sans CJK KR;
+    color: #A09FA5;
+}
+
+::-webkit-file-upload-button {
+    display: none;
+}
+
+.selectFileInputRow button {
+    background: linear-gradient(97.7deg, #0E6FDA 0%, #0040A0 100%);
+    border-radius: 4px;
+    width: 160px;
+    height: 52px;
+    font-weight: bold;
+    font-size: 16px;
+    color: #FFFFFF;
+    line-height: 24px;
+    font-family: Noto Sans CJK KR;
+    border: none;
+    margin-left: 40px;
+}
+
+.selectFileInputRow p {
+    position: absolute;
+    top: 0;
+    border: 1px solid #CFCFD2;
+    background: #FFFFFF;
+    width: 960px;
+    height: 52px;
+    line-height: 52px;
+    padding-left: 20px;
+    margin-top: 20px;
+    /* padding:14px 20px; */
+}
+
+.selectFileInputRow h6 {
+    position: absolute;
+    bottom: -36px;
+    padding-left: 20px;
+    color: #FF0000;
+    font-weight: normal;
+    line-height: 24px;
+    font-family: Noto Sans CJK KR;
+}
+
+.submitBtnRow {
+    padding-top: 120px;
+    padding-bottom: 160px;
+    text-align: center;
+}
+
+.submitBtnRow button {
+    width: 260px;
+    height: 64px;
+    background: #CFCFD2;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 20px;
+    color: #FFFFFF;
+    font-family: Noto Sans CJK KR;
+    border:none !important;
 }
