@@ -140,7 +140,7 @@ const FindPassword = () => {
                     <h4>{t("logIn.find_password")}</h4>
                 </div>
                 <div className="FindPasswordFullForm ">
-                    <div>
+                    <div className="position-relative">
                         <div>
                             <label>{t("logIn.email")}</label>
                         </div>
@@ -150,7 +150,7 @@ const FindPassword = () => {
                                 name="email"
                                 value={findPasswordform.email}
                                 type="text"
-                                className="find-password-email-input find-password-email-input-width"
+                                className={findPasswordform.email == "" ? 'find-password-email-input find-password-email-input-width' : 'find-password-email-input-dark find-password-email-input-width'}
                                 onChange={(e) => {
                                     handleChange(e);
                                 }}
@@ -176,7 +176,7 @@ const FindPassword = () => {
                                 <p className="form-error">{invalidEmail}</p>
                             )}
                     </div>
-                    <div >
+                    <div className="position-relative">
                         <div>
                             <label>{t("logIn.password")}</label>
                         </div>
@@ -186,7 +186,7 @@ const FindPassword = () => {
                                 name="verification_code"
                                 value={findPasswordform.verification_code}
                                 type='text'
-                                className="find-password-email-input mb-0"
+                                className={findPasswordform.verification_code == "" ? 'find-password-email-input mb-0' : 'find-password-email-input-dark mb-0'}
                                 onChange={(e) => {
                                     handleChange(e);
                                 }}
