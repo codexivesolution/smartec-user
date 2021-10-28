@@ -129,6 +129,29 @@ export const ApiPatch = (type, userData) => {
     });
 }
 
+export const ApiPatchNoAuth = (type, userData) => {
+    const s = type.includes('?') ? '&' : '?';
+    return new Promise((resolve, reject) => {
+        axios.patch(`${BaseURL}${type}${s}lang=${AuthStorage.getLang()}`, userData, getHttpOptions({ ...defaultHeaders, isAuth: false }))
+            .then((responseJson) => {
+                resolve(responseJson.data);
+            })
+            .catch((error) => {
+                if (error?.response?.status === 401) {
+                    AuthStorage.deauthenticateUser();
+                    window.location.href = "/"
+                }
+                if (error && error.hasOwnProperty('response') &&
+                    error.response && error.response.hasOwnProperty('data') && error.response.data &&
+                    error.response.data.hasOwnProperty('message') && error.response.data.message) {
+                    reject(error.response.data.message);
+                } else {
+                    reject(error);
+                }
+            });
+    });
+}
+
 
 export const ApiDelete = (type, userData) => {
     const s = type.includes('?') ? '&' : '?';
