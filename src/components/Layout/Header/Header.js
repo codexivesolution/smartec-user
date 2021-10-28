@@ -3,8 +3,6 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
 import TopHeader from './TopBar';
-import BurgerMenus from './BurgerMenus';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Image from 'next/Image';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
@@ -18,14 +16,6 @@ const Header = () => {
 	const { userData } = useSelector((state) => state.userData);
 	const { is_loggedin } = useSelector((state) => state.login);
 	const [path, setPath] = useState("")
-
-	// useEffect(() => {
-	// 	dispatch(getUserData());
-	// }, []);
-
-	useEffect(() => {
-		console.log("userData userData userData userData ", userData)
-	}, [userData])
 
 	const goToLogin = () => {
 		router.push("/auth/login");
@@ -63,7 +53,6 @@ const Header = () => {
 									{!is_loggedin &&
 										<button className="UserLoginBtn" onClick={goToLogin}><img src="/assets/img/img/Union.svg" alt="user" />{t("logIn.log_In")}</button>
 									}
-									{/* <a className="btn" href="#"><span className="btn-text">Consultancy <i><FontAwesomeIcon icon={['fas', 'long-arrow-alt-right']} /></i></span> </a> */}
 								</div>
 								<div className="main-menu text-right d-none d-lg-block">
 									<nav id="mobile-menu">
@@ -73,26 +62,15 @@ const Header = () => {
 											<li><Link href="/" as="/"><a>{t("data_science")}</a></Link></li>
 											<li><Link href="/" as="/"><a>{t("smart_fatty_liver_care")}</a></Link></li>
 											<li><Link href="/" as="/"><a>{t("investment_information")}</a></Link></li>
-											{/* <li><Link href="/contact" as="/contact"><a>Contact</a></Link></li> */}
 										</ul>
 									</nav>
 								</div>
-								<div className="d-block d-xl-none d-lg-none text-right">
-									<div className="menu-bar">
-										<button className="bars" onClick={() => {
-											setMenuOpen(!menuOpen)
-										}}>
-											<i> <FontAwesomeIcon icon={['far', 'bars']} /></i>
-										</button>
 
-									</div>
-								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 
-				<BurgerMenus menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
 				<div onClick={() => setMenuOpen(fasse)} className={menuOpen ? "body-overlay show" : "body-overlay"}></div>
 
 			</header>

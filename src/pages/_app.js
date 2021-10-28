@@ -5,11 +5,9 @@ import '../helper/i18n/index'
 import React, { useEffect, useState } from 'react';
 import withRedux from "next-redux-wrapper";
 import store from '../redux/store';
-import { loadIcons } from '../utils/IconLoader';
 import Header from '../components/Layout/Header/Header';
 import Footer from '../components/Layout/Footer/Footer';
 
-loadIcons();
 
 class MyApp extends App {
 
@@ -20,21 +18,14 @@ class MyApp extends App {
 
     static async getInitialProps({ Component, ctx }) {
         const pageProps = Component.getInitialProps ? await Component.getInitialProps(ctx) : {};
-        //Anything returned here can be accessed by the client
         return { pageProps: pageProps };
     }
 
 
 
     render() {
-        //Page props that were returned  from 'getInitialProps' are stored in the props i.e. pageprops
         const { Component, pageProps, store } = this.props;
 
-        // ComponentDidMount(() => {
-        //     this.setState({
-        //         IsLoading: true
-        //     })
-        // }, [])
 
         setTimeout(() => {
             this.setState({

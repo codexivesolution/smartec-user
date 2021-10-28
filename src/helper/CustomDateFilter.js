@@ -1,12 +1,12 @@
 import moment from 'moment';
 
-export const CustomDateFilter = (choice:any) => {
-   
+export const CustomDateFilter = (choice) => {
+
     switch (choice) {
         case '어제':
             //yesterday
             return moment().subtract(1, 'days').toDate()
-            // console.log(moment(moment().subtract(1, "days").format('YYYY-MM-DD')).toDate());
+        // console.log(moment(moment().subtract(1, "days").format('YYYY-MM-DD')).toDate());
         case '오늘':
             // today
             return moment().toDate()
@@ -19,6 +19,6 @@ export const CustomDateFilter = (choice:any) => {
             // setStartDate(moment(moment().subtract(3, "M").startOf("month").format('YYYY-MM-DD')).toDate());
             return moment().subtract(6, "M").toDate();
         case '1년':
-            return moment().subtract(1, "y").toDate();        
+            return moment().subtract(1, "y").toDate();
     }
 }

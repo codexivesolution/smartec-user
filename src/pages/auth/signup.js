@@ -58,7 +58,6 @@ const Signup = () => {
     }
 
     useEffect(() => {
-        console.log(SignupForm)
         if (SignupForm.first_name === "" || SignupForm.last_name === "" || SignupForm.organization === "" || SignupForm.country === "" || SignupForm.email === ""
             || SignupForm.password === "" || SignupForm.confirmPassword === "" || SignupForm.agreeTerms === false
         ) {

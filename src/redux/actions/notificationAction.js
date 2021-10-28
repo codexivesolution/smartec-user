@@ -27,7 +27,7 @@ export const getNotification = (id) => (dispatch) => {
         }
       },
       (err) => {
-        console.log("Error in getNotification: ", err);
+
       }
     );
   return unsubscribe;
