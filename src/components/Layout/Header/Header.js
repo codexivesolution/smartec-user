@@ -38,7 +38,7 @@ const Header = () => {
 				<div id="sticky-header" className="main-menu-area">
 					<div className="container">
 						<div className="row align-items-center">
-							<div className="col-xl-3 col-lg-3 col-md-6 col-8 d-flex align-items-center">
+							<div className="col-xl-3 col-lg-3 col-md-6 col-8 d-flex align-items-center p-0">
 								<div className="logo">
 									<Link href="/" as="/">
 										<Image src={'/assets/img/img/logo.svg'} width='185.55' height='46.44' alt="flag" />
